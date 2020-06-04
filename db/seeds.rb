@@ -1,8 +1,8 @@
 #seeds for the data base
 #users table
-dh = User.create(username: "Dhrubo", email: "dhrubo@gmail.com")
-rasel = User.create(username: "Rasel", email: "rasel@gmail.com")
-nasir = User.create(username: "Nasir", email: "nasir@yahoo.com")
+dh = User.create(username: "Dhrubo", email: "dhrubo@gmail.com", password: "password987")
+rasel = User.create(username: "Rasel", email: "rasel@gmail.com", password: "password987")
+nasir = User.create(username: "Nasir", email: "nasir@yahoo.com", password: "password987")
 
 #camapigns table
 dh_campaign = Campaign.create(title: "Dhrubo's Fundraiser", 

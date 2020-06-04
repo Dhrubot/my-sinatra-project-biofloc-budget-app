@@ -33,3 +33,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_071432) do
   end
 
 end
+
+# select donations.amount from donations 
+# join users on donations.donor_id = users.id 
+# join campaigns on donations.campaign_id = campaign.id

@@ -1,1 +1,27 @@
-<%=@user.username%>
+<p>
+    <%=@user.username%>
+    <br>
+    <label for="organized_campaigns">Campaigns you've organized so far:</label>
+    <br>
+    <%@user.organized_campaigns.each do |campaign|%>
+        <%=campaign.title%>
+        <br>
+        <%=campaign.description%>
+        <br>
+        <%=campaign.goal_amount%>
+        <br>
+    <%end%>
+</p>
+    <br>
+<p>
+    <label for="donations">Campaigns you have donated so far:</label>
+    <br>
+    <%@user.donations.each do |donation|%>
+        <%=donation.campaign.title%>
+        <br>
+        <%="$#{donation.amount}"%>
+        <br>
+    <%end%>
+    <br>
+    <a href="/logout"><input type="submit" value="Log Out"></a>
+</p>

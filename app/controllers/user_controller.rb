@@ -1,6 +1,12 @@
 class UserController < ApplicationController
 
 
+    get '/profile' do
+        @user = User.find(session[:user_id])
+
+        erb :'users/index'
+    end
+
     get '/signup' do
         #should show options for signup
         erb :'users/new'
@@ -9,7 +15,8 @@ class UserController < ApplicationController
     post '/users' do
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
         if @user.save
-            redirect to "/users/#{@user.id}" #will need to refractor this to redirect to the username.
+            session[:user_id] = @user.id
+            redirect to "/profile" 
         else
             redirect to '/signup'
         end
@@ -19,9 +26,21 @@ class UserController < ApplicationController
         erb :'/users/login'
     end
 
-    get '/users/:id' do
-        @user = User.find(params[:id])
+    post '/login' do
+        @user = User.find_by(username: params[:username])
 
-        erb :'/users/index'
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect to "/profile"
+        else
+            redirect to '/login'
+        end
+    end
+
+
+
+    get '/logout' do
+        session.clear
+        redirect '/'
     end
 end
