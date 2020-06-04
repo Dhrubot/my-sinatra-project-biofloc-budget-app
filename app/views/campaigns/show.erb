@@ -1,0 +1,16 @@
+<%=@campaign.organizer.username%>
+<br>
+<%=@campaign.title%>
+<br>
+<%=@campaign.description%>
+<br>
+<%=@campaign.goal_amount%>
+<br>
+<br>
+<a href="/campaigns/<%= @campaign.id%>/edit"><input type="submit" value="Edit">
+
+
+<form method="POST" action="/campaigns/<%= @campaign.id %>">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>

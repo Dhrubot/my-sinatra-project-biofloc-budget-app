@@ -1,0 +1,18 @@
+<%@campaigns.each.with_index(1) do |campaign, idx|%>
+    <p>
+        <h3><%=idx%></h3>
+        <label for="organizer_name">Oragnized By:</label>
+        <%=campaign.organizer.username%>
+        <br>
+        <label for="goal_amount">Goal:</label>
+        <%="$#{campaign.goal_amount}"%>
+        <br>
+        <label for="title">Title:</label>
+        <%=campaign.title%>
+        <br>
+        <label for="description">Description:</label>
+        <%=campaign.description%>
+        <br>
+        <a href="/campaigns/<%=idx%>">Donate</a>
+    </p>
+<%end%>
