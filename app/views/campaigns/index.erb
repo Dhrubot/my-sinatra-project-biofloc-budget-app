@@ -1,18 +1,42 @@
+
 <%@campaigns.each.with_index(1) do |campaign, idx|%>
-    <p>
-        <h3><%=idx%></h3>
-        <label for="organizer_name">Oragnized By:</label>
-        <%=campaign.organizer.username%>
-        <br>
-        <label for="goal_amount">Goal:</label>
-        <%="$#{campaign.goal_amount}"%>
-        <br>
-        <label for="title">Title:</label>
-        <%=campaign.title%>
-        <br>
-        <label for="description">Description:</label>
-        <%=campaign.description%>
-        <br>
-        <a href="/campaigns/<%=idx%>">Donate</a>
-    </p>
+    <%if logged_in? && @user.id == campaign.organizer_id%>
+        <p>
+            <h3><%=idx%></h3>
+            <label for="organizer_name">Oragnized By:</label>
+            <%=campaign.organizer.username%>
+            <br>
+            <label for="goal_amount">Goal:</label>
+            <%="$#{campaign.goal_amount}"%>
+            <br>
+            <label for="title">Title:</label>
+            <%=campaign.title%>
+            <br>
+            <label for="description">Description:</label>
+            <%=campaign.description%>
+            <br>
+            <a href="/campaigns/<%=campaign.id%>/edit">Edit</a>
+            <a href="/campaigns/<%=campaign.id%>/delete">Delete</a>
+        </p>
+        
+    <% else %>
+        <p>
+            <h3><%=idx%></h3>
+            <label for="organizer_name">Oragnized By:</label>
+            <%=campaign.organizer.username%>
+            <br>
+            <label for="goal_amount">Goal:</label>
+            <%="$#{campaign.goal_amount}"%>
+            <br>
+            <label for="title">Title:</label>
+            <%=campaign.title%>
+            <br>
+            <label for="description">Description:</label>
+            <%=campaign.description%>
+            <br>
+            <a href="/campaigns/<%=campaign.id%>">Donate</a>
+        </p>
+    <%end%>
 <%end%>
+
+<nav><a href="/">Home</a></nav>

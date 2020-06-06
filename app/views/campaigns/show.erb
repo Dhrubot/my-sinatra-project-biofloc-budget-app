@@ -4,13 +4,28 @@
 <br>
 <%=@campaign.description%>
 <br>
-<%=@campaign.goal_amount%>
+<span> $<%=@campaign.donations.sum(&:amount)%> Raised of $<%=@campaign.goal_amount%> Goal</span>
+<br>
+ <progress value=<%=@campaign.donations.sum(&:amount)%> max=<%=@campaign.goal_amount%>></progress>
 <br>
 <br>
-<a href="/campaigns/<%= @campaign.id%>/edit"><input type="submit" value="Edit">
+
+<% if logged_in? && current_user.id == @campaign.organizer_id %>
+ 
+  <a href="/campaigns/<%= @campaign.id%>/edit"><input type="submit" value="Edit"> 
+  <form method="POST" action="/campaigns/<%= @campaign.id %>">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+<br>
+<h3><a href="/dashboard">Back to Dashboard</a></h3>
+
+<% elsif logged_in? %>
+    <a href="/campaigns/<%= @campaign.id%>/donate">Donate</a>
+  <br>
+<h3><a href="/dashboard">Back to Dashboard</a></h3>
+<% else %>
+  <h3><a href="/signup">Signup</a> or <a href="/login">Log In</a> To Donate</h3>
+<% end %>
 
 
-<form method="POST" action="/campaigns/<%= @campaign.id %>">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete">
-</form>

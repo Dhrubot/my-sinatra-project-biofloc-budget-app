@@ -1,0 +1,19 @@
+<form method="POST" action="/profile">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" placeholder="<%= @user.email %>">
+    <br>
+
+    <label for="password">New Password:</label>
+    <input type="password" name="password">
+    <br>
+
+    <input type="submit" value="Update"><a href="/profile"><input type="submit" value="Cancel"></a>
+    
+</form>
+
+<form method="POST" action="profile/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Account">
+</form>

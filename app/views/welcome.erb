@@ -1,5 +1,28 @@
 <h1>Welcome to ComeFundUs!</h1>
 
+<%if logged_in? %>
+        <nav><a href="/dashboard">View My Dashboard</a></h3></nav>
+
+        <a href="/campaigns/new">Start a fundraiser</a>
+
+        <h3>Featured Campaign</h3>
+        <%=@featured_campaign.title%>
+
+        <nav><a href="/campaigns/<%=@featured_campaign.id%>">Click here to Donate</a></nav>
+<% else %>
+        <nav><a href="/signup">Start a fundraiser</a></nav>
+        <h3>Featured Campaign</h3>
+        <%=@featured_campaign.title%>
+
+        <nav><a href="/signup">Donate Now</a></nav>
+
+        <nav><a href="/signup">Sign up </a></nav>
+        <nav><a href="/login">Log In</a></nav>
+<%end%>
+
+<a href="/campaigns">All Campaigns That Need Your Help</a>
+
+  
 
 <footer class="branding">
         <small>&copy; 2020 <strong>ComeFundUs</strong></small>

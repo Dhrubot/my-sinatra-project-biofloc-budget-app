@@ -1,0 +1,12 @@
+<h1>Thank you for choosing to help <%=@campaign.title%></h1>
+
+<label for="donation-amount">Enter Your Donation Amount</label>
+<form method="POST" action="/campaigns/<%=@campaign.id%>/donate">
+    <span> USD $<input type="text" name="amount">.00</span>
+    <br>
+    <textarea name="message">Leave a supportive message to the organizer!</textarea>
+    <br>
+    <input type="submit" value="Confirm Donation">
+</form>
+
+<a href="/campaigns/<%=@campaign.id%>">Back to Campaign</a>

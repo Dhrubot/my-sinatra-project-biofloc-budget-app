@@ -7,7 +7,7 @@ class CampaignController < ApplicationController
         erb :'/campaigns/index'
     end
 
-    #new campaign
+    #new
 
     get '/campaigns/new' do
 
