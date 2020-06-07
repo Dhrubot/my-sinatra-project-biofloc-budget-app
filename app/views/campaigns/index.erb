@@ -14,10 +14,7 @@
                             <br>
                             <div class="progress" style="width: 40%">
                                 <%@percentage = campaign.donations.sum(&:amount).to_f / campaign.goal_amount.to_f * 100 %>
-                                <div class="progress-bar" 
-                                role="progressbar" aria-valuenow="#{<%=@percentage%>}" aria-valuemin="0" 
-                                aria-valuemax="100" style=<%= "width: #{@percentage}%;"%>>
-                                <%="#{@percentage.to_i}%"%>
+                                <div class="progress-bar" style="width: <%=@percentage%>%;">>
                                 </div>
                             </div>
                             <br>

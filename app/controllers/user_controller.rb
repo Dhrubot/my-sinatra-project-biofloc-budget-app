@@ -53,7 +53,7 @@ class UserController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect to "/dashboard"
-        elsif @user && !!@user.authenticate(params[:password])
+        elsif @user && !@user.authenticate(params[:password])
             flash[:message] = "Password is wrong for that username. Try again."
             redirect to '/login'
         else

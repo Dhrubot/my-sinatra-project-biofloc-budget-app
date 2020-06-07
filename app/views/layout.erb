@@ -13,21 +13,21 @@
     <body>
                 
                 <!--NavBar -->
-        <nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <div class="container">
                 <a class="navbar-brand" href="/">ComeFundUs</a>
-                <button class="navbar-toggler" type="button" 
-                data-toggle="collpase" data-target="#navbarResponsive">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/campaigns">Campaigns</a>
                         </li>
+                        <%if logged_in? %>
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
@@ -37,17 +37,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Log out</a>
                         </li>
+                        <%else%>
                         <li class="nav-item">
                             <a class="nav-link" href="/signup">Sign up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Log in</a>
                         </li>
+                        <%end%>
                     </ul>
                 </div>
-            </div>
+            </div>  
         </nav>
-
 
        
              <%= yield %>
@@ -58,5 +59,22 @@
         
     </body>
 
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <h6><p class="text-justify"> <a href="/about">About Us</a></p></h6>        
+          </div>
 
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a href="/">ComeFundUs</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+</footer>
 </html>

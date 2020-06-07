@@ -14,14 +14,17 @@
                 <br>
                 <h4 class="display-6 strong"><%="Nothing to show here." if @user.organized_campaigns.empty?%></h4>
                 <%@user.organized_campaigns.each.with_index(1) do |campaign, idx|%>
+                    <h4 class="display-6 strong">
                     <%="#{idx}."%>
                     <%=campaign.title%>
                     <br>
+                    Goal amount: <%="$#{campaign.goal_amount}"%>
+                    </h4>
+                    <br>
                     <%=campaign.description%>
                     <br>
-                    <%="$#{campaign.goal_amount}"%>
                     <br>
-                    <span>Click <a class="btn btn-dark" href="/campaigns/<%=campaign.id%>">Here </a>To Update or Delete</span>
+                    <span>Click <a class="btn btn-dark btn-sm" href="/campaigns/<%=campaign.id%>">Here</a> To Update or Delete</span>
                     <br>
                     <br>
                 <%end%>
@@ -34,9 +37,11 @@
                 <br>
                  <h4 class="display-6 strong"><%="Nothing to show here." if @user.donations.empty?%></h4>
                 <%@user.donations.each.with_index(1) do |donation, idx|%>
+                    <h4 class="display-6 strong">
                     <%="#{idx}. #{donation.campaign.title}"%>
                     <br>
-                    <label for="donation">Donated Amount:</label><%="$#{donation.amount}"%>
+                    <label for="donation">Donated Amount: </label><%="$#{donation.amount}"%>
+                    </h4>
                     <br>
                     <br>
                 <%end%>

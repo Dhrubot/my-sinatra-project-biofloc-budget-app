@@ -1,44 +1,53 @@
 <div class="container-fluid padding">
   <div class="row welcome text-center">
-    <div class="col-12">
-        <h1 class="display-4 strong"><%=@campaign.title%></h1>
-        <h3 class="display-6 strong">Goal: <%="$#{@campaign.goal_amount}"%></h3>
-        <h4 class="display-6">Oragnized By: <%=@campaign.organizer.username%></h4>
-        <span> $<%=@campaign.donations.sum(&:amount)%> Raised of $<%=@campaign.goal_amount%> Goal</span>
-        <br>
-        <div class="progress" style="width: 40%">
-            <%@percentage = @campaign.donations.sum(&:amount).to_f / @campaign.goal_amount.to_f * 100 %>
-            <div class="progress-bar" 
-            role="progressbar" aria-valuenow="#{<%=@percentage%>}" aria-valuemin="0" 
-            aria-valuemax="100" style=<%= "width: #{@percentage}%;"%>>
-            <%="#{@percentage.to_i}%"%>
-            </div>
-        </div>
-        <br>
-        <br>
-        <%=@campaign.description%>
-        <br>
-        <br>
-
-      <% if logged_in? && current_user.id == @campaign.organizer_id %>
-      
-        <a href="/campaigns/<%= @campaign.id%>/edit"><input class="btn btn-info" type="submit" value="Edit"> 
-        <form method="POST" action="/campaigns/<%= @campaign.id %>">
-          <input id="hidden" type="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete">
-        </form>
+    <div class="col-lg-6">
       <br>
-      <h3><a href="/dashboard">Back to Dashboard</a></h3>
+      <br>
+        <h1 class="display-4 strong"><%=@campaign.title%></h1>
+          <h3 class="display-6 strong">Goal: <%="$#{@campaign.goal_amount}"%></h3>
+          <h4 class="display-6">Oragnized By: <%=@campaign.organizer.username%></h4>
+           <span> $<%=@campaign.donations.sum(&:amount)%> Raised of $<%=@campaign.goal_amount%> Goal</span>
+          <br>
+          <br>
+          <div class="progress" style="width :100%">
+            <%@percentage = @campaign.donations.sum(&:amount).to_f / @campaign.goal_amount.to_f * 100 %>
+                <div class="progress-bar" style="width: <%=@percentage%>%;">
+                </div>
+          </div>
+          <br>
+          <br>
+          <label for="description">Description:</label>
+          <%=@campaign.description%>
+          <br>
+          <br>
+    </div>
 
-      <% elsif logged_in? %>
+    <div class="col-lg-6" id="camapign-column">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <% if logged_in? && current_user.id == @campaign.organizer_id %>
+          <br>
+          <br>
+          <form method="POST" action="/campaigns/<%= @campaign.id %>">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <a href="/campaigns/<%= @campaign.id%>/edit" class="btn btn-info">Edit</a> <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+          <br>
+          <h3><a href="/dashboard">Back to Dashboard</a></h3>
+
+        <% elsif logged_in? %>
           <a class="btn btn-success" href="/campaigns/<%= @campaign.id%>/donate">Donate</a>
-        <br>
-        <br>
-      <h3><a href="/dashboard">Back to Dashboard</a></h3>
+          <br>
+          <br>
+          <h3><a href="/dashboard">Back to Dashboard</a></h3>
       <% else %>
-        <h3><a href="/signup">Signup</a> or <a href="/login">Log In</a> To Donate</h3>
+          <h3><a href="/signup">Signup</a> or <a href="/login">Log In</a> To Donate</h3>
       <% end %>
-      </div>
+    </div>
   </div>
 </div>
 

@@ -30,7 +30,8 @@
                         </span>
                     </a>
             </div>
-            <div class="main-text hidden-xs">
+
+            <div class="main-text">
                 <div class="col-md-12 text-center">
                     <h1>Free Fundraising for the people and the causes we care about</h1>
                     <h3>Starting is easy. 0% platform fee</h3>
@@ -74,7 +75,7 @@
 <div class="container-fluid padding">
         <div class="row text-center">
         <div class="col-12">
-        <a href="/campaigns/new">Start a fundraiser</a>
+        <h1>Featured Campaign<h1>
         </div>
         </div>              
 </div>
@@ -84,12 +85,15 @@
         <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-lg-6">
-                <h1>Featured Campaign</h1>
                 <h2><%=@featured_campaign.title%></h2>
                 <br>
                 <p><%=@featured_campaign.description%></p>
             </div>
-            <div class="col-leg-6">
+            <div class="col-lg-6">
+            <br>
+            <br>
+            <br>
+            <br>
                 <p><h4>$<%=@featured_campaign.donations.sum(&:amount)%> Raised of $<%=@featured_campaign.goal_amount%> Goal</h4>
                 <div class="progress">
                 <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="#{<%=@featured_campaign.donations.sum(&:amount)%>}" aria-valuemin="0" aria-valuemax="#{<%=@featured_campaign.goal_amount%>}">

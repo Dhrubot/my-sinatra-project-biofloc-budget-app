@@ -2,8 +2,9 @@
 {
     position: absolute;
     bottom: 50px;
-    width: 96.66666666666666%;
+    width: auto;
     color: #FFF;
+    font-size-adjust: inherit;
 }
 .btn-min-block
 {
@@ -27,10 +28,12 @@
     margin-left: auto; 
     margin-right:auto; 
     background-color: rgb(161, 243, 161);
+    position: relative;
 }
 
 .progress-bar 
 {   
+    position: relative;
     margin-right:auto; 
     background-color: rgb(48, 160, 48);
     color: rgb(48, 160, 48);
