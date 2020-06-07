@@ -1,15 +1,25 @@
 class UserController < ApplicationController
 
+    # before '/*' do
+    #     authentication_error unless request.path == '/login' || request.path == '/signup' || logged_in?
+    # end
+    
+    ['/campaigns/*', "/profile", "/dashboard"].each do |path|
+        before path do
+            authentication_error
+        end
+    end
+    
     #index
     get '/dashboard' do
-        @user = User.find(session[:user_id])
+        @user = User.find(current_user.id)
 
         erb :'users/index'
     end
 
     #show
     get '/profile' do
-        @user = User.find(session[:user_id])
+        @user = User.find(current_user.id)
 
         erb :'users/show'
     end
@@ -21,12 +31,13 @@ class UserController < ApplicationController
     end
 
     #create
-    post '/users' do
+    post '/dashboard' do
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
-        if @user.save
+        if @user.save && @user.valid?
             session[:user_id] = @user.id
-            redirect to "/" 
+            redirect to "/dashboard" 
         else
+            flash[:alert] = @user.errors.full_messages
             redirect to '/signup'
         end
     end
@@ -41,9 +52,13 @@ class UserController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect to "/"
-        else
+            redirect to "/dashboard"
+        elsif @user && !!@user.authenticate(params[:password])
+            flash[:message] = "Password is wrong for that username. Try again."
             redirect to '/login'
+        else
+            flash[:message] = "Username doesn't exist. Please signup."
+            redirect to 'login'
         end
     end
 
@@ -56,14 +71,14 @@ class UserController < ApplicationController
 
     #edit
     get '/profile/edit' do
-        @user = User.find(session[:user_id])
+        @user = User.find(current_user.id)
 
         erb :'users/edit'
     end
 
     #update
     patch '/profile' do
-        @user = User.find(session[:user_id])
+        @user = User.find(current_user.id)
         if params[:password] == ""
             @user.update(email: params[:email])
         elsif params[:email] == ""
@@ -77,7 +92,7 @@ class UserController < ApplicationController
 
     #destroy
     delete '/profile/delete' do
-        @user = User.find(session[:user_id])
+        @user = User.find(current_user.id)
         @user.delete
 
         redirect to '/'

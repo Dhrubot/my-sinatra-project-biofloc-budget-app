@@ -1,16 +1,37 @@
-<h1>Signup</h1>
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
 
-<form method="POST" action="/users">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username">
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email">
-    <br>
-    <br>
-    <label for="password">Choose a Password:</label>
-    <input type="password" name="password" id="password">
-    <br>
-    <br>
-    <input type="submit" value="Submit">
-</form>
+
+            <h1>Signup</h1>
+            
+
+            <% if flash[:alert] %>
+                <% flash[:alert].each do |message| %>
+                <div class="alert alert-danger" role="alert">
+                    <%= message %>
+                    <br>
+                </div>
+                <% end %>
+            <% end %>
+            
+            <form method="POST" action="/dashboard">
+                <label for="username">Please choose a Username:</label>
+                <br>
+                <input type="text" name="username" id="username" placeholder="Username:">
+                <br>
+                <label for="email">Enter your Email:</label>
+                <br>
+                <input type="email" name="email" id="email" placeholder="Email:">
+                <br>
+                <br>
+                <label for="password">Choose a Password(must be 5 character long):</label>
+                <br>
+                <input type="password" name="password" id="password" placeholder="Password:">
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>

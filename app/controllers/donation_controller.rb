@@ -1,5 +1,11 @@
 class DonationController < ApplicationController
 
+
+    get '/campaigns/:id/donate/success' do
+
+        erb :'donations/success'
+    end
+
     get '/campaigns/:id/donate' do
         @campaign = Campaign.find(params[:id])
 
@@ -14,12 +20,8 @@ class DonationController < ApplicationController
         @donation.campaign_id = params[:id]
         @donation.save
         
-        redirect to '/donations/success'
+        redirect to '/campaigns/:id/donate/success'
     end
 
-    get '/dashboard/success' do
-        
-        erb :'donations/success'
-    end
 
 end

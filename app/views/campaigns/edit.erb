@@ -1,24 +1,35 @@
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
 
-<%if @user.id == @campaign.organizer_id%>
-    <form method="POST" action="/campaigns/<%= @campaign.id %>">
-        <input id="hidden" type="hidden" name="_method" value="patch">
 
-        <label for="Organizer">Oraganized By:</label>
-        <%= @campaign.organizer.username%>
-        <br>
+            <%if logged_in? && current_user.id == @campaign.organizer_id%>
+                <form method="POST" action="/campaigns/<%= @campaign.id %>">
+                    <input id="hidden" type="hidden" name="_method" value="patch">
 
-        <label for="title">Title:</label>
-        <input type="text" name="title" value="<%= @campaign.title %>">
-        <br>
+                    <h4 class="display-4 strong">
+                    <label for="Organizer">Oraganized By:</label>
+                    <%= @campaign.organizer.username%>
+                    <br>
+                    </h4>
 
-        <label for="title">Description:</label>
-        <textarea name="description" id="campaign_description"><%= @campaign.description %></textarea>
-        <br>
+                    <h4>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" value="<%= @campaign.title %>">
+                    <br>
 
-        <label for="goal_amount">Goal:</label>
-        <input type="text" name="goal_amount" value="<%= @campaign.goal_amount %>">
-        <br>
+                    <label for="title">Description:</label>
+                    <textarea name="description" id="campaign_description"><%= @campaign.description %></textarea>
+                    <br>
 
-        <input type="submit" value="Update">
-    </form>
-<%end%>
+                    <label for="goal_amount">Goal:</label>
+                    <input type="text" name="goal_amount" value="<%= @campaign.goal_amount %>">
+                    <br>
+                    </h4>
+
+                    <input class="btn btn-primary" type="submit" value="Update">
+                </form>
+            <%end%>
+        </div>
+    </div>
+</div>

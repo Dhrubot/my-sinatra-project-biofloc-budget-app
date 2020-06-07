@@ -14,4 +14,5 @@ database_config = {
 
 set :database, database_config
 
+require 'rack-flash'
 require_all 'app'

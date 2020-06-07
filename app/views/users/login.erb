@@ -1,11 +1,29 @@
-<h3>Login</h3>
-<form action="/login" method="POST">
-    <br>
-    <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="Username:" id="username">
-    <br>
-    <label for="password">Enter Password:</label>
-    <input type="password" name="password" placeholder="Password:" id="password">
-    <br>
-    <input type="submit" value="Log In">
-</form>
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+
+            <h3>Login</h3>
+            <% if flash[:message] %>
+                <div class="alert alert-danger" role="alert">
+                    <%= flash[:message] %>
+                    <br>
+                </div>
+            <% end %>
+            <form action="/login" method="POST">
+                <br>
+                <label for="username">Username:</label>
+                <br>
+                <input type="text" name="username" placeholder="Username:" id="username">
+                <br>
+                <label for="password">Enter Password:</label>
+                <br>
+                <input type="password" name="password" placeholder="Password:" id="password">
+                <br>
+                <br>
+                <input class="btn btn-primary" type="submit" value="Sign in">
+            </form>
+            <br>
+            <span>Don't have an account? Click here to <a class="btn btn-primary" href="/signup">Sign Up</a></span>
+        </div>
+    </div>
+<div>

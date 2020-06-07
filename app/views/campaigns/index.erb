@@ -1,42 +1,42 @@
 
-<%@campaigns.each.with_index(1) do |campaign, idx|%>
-    <%if logged_in? && @user.id == campaign.organizer_id%>
-        <p>
-            <h3><%=idx%></h3>
-            <label for="organizer_name">Oragnized By:</label>
-            <%=campaign.organizer.username%>
-            <br>
-            <label for="goal_amount">Goal:</label>
-            <%="$#{campaign.goal_amount}"%>
-            <br>
-            <label for="title">Title:</label>
-            <%=campaign.title%>
-            <br>
-            <label for="description">Description:</label>
-            <%=campaign.description%>
-            <br>
-            <a href="/campaigns/<%=campaign.id%>/edit">Edit</a>
-            <a href="/campaigns/<%=campaign.id%>/delete">Delete</a>
-        </p>
-        
-    <% else %>
-        <p>
-            <h3><%=idx%></h3>
-            <label for="organizer_name">Oragnized By:</label>
-            <%=campaign.organizer.username%>
-            <br>
-            <label for="goal_amount">Goal:</label>
-            <%="$#{campaign.goal_amount}"%>
-            <br>
-            <label for="title">Title:</label>
-            <%=campaign.title%>
-            <br>
-            <label for="description">Description:</label>
-            <%=campaign.description%>
-            <br>
-            <a href="/campaigns/<%=campaign.id%>">Donate</a>
-        </p>
-    <%end%>
-<%end%>
+<div class="container-fluid padding">
+        <div class="row welcome text-center">
+                <div class="col-12">
 
-<nav><a href="/">Home</a></nav>
+                <%@campaigns.each.with_index(1) do |campaign, idx|%>
+                    <h1 class="display-4 strong"><%=campaign.title%></h1>
+                            <h3 class="display-6 strong">Goal: <%="$#{campaign.goal_amount}"%></h3>
+                            <h4 class="display-6">Oragnized By: <%=campaign.organizer.username%></h4>
+                            <label for="description">Description:</label>
+                            <%=campaign.description%>
+                            <br>
+                            <span> $<%=campaign.donations.sum(&:amount)%> Raised of $<%=campaign.goal_amount%> Goal</span>
+                            <br>
+                            <div class="progress" style="width: 40%">
+                                <%@percentage = campaign.donations.sum(&:amount).to_f / campaign.goal_amount.to_f * 100 %>
+                                <div class="progress-bar" 
+                                role="progressbar" aria-valuenow="#{<%=@percentage%>}" aria-valuemin="0" 
+                                aria-valuemax="100" style=<%= "width: #{@percentage}%;"%>>
+                                <%="#{@percentage.to_i}%"%>
+                                </div>
+                            </div>
+                            <br>
+                    <%if logged_in? && @user.id == campaign.organizer_id%>
+                        <p>
+                            <a href="/campaigns/<%=campaign.id%>/edit"  class="btn btn-info">Edit</a>
+                            <a href="/campaigns/<%=campaign.id%>/delete" class="btn btn-danger">Delete</a>
+                        </p>
+                        <br>
+                        <br>
+                        
+                    <% else %>
+                        <p>
+                            <a href="/campaigns/<%=campaign.id%>" class="btn btn-success">Donate</a>
+                        </p>
+                        <br>
+                        <br>
+                    <%end%>
+                <%end%>
+                </div>
+        </div>
+</div>

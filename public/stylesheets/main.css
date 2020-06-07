@@ -1,6 +1,37 @@
-footer.branding {
-    border-top: 2px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
-  }
+.main-text
+{
+    position: absolute;
+    bottom: 50px;
+    width: 96.66666666666666%;
+    color: #FFF;
+}
+.btn-min-block
+{
+    min-width: 170px;
+    line-height: 26px;
+}
+/* .btn-clear
+{
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+    margin-right: 15px;
+}
+.btn-clear:hover
+{
+    color: #000;
+    background-color: #FFF;
+} */
+.progress 
+{ 
+    margin-left: auto; 
+    margin-right:auto; 
+    background-color: rgb(161, 243, 161);
+}
+
+.progress-bar 
+{   
+    margin-right:auto; 
+    background-color: rgb(48, 160, 48);
+    color: rgb(48, 160, 48);
 }

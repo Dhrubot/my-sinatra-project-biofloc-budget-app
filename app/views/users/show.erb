@@ -1,10 +1,16 @@
-<%=@user.username%>
-<br>
-<%=@user.email%>
-<br>
-<%=@user.password%>
-<br>
-<br>
-<h3><a href="/profile/edit">Edit Profile</a></h3>
-<h3><a href="/dashboard">Back to Dashboard</a></h3>
-<br>
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <%=@user.username%>
+            <br>
+            <%=@user.email%>
+            <br>
+            <%=@user.password%>
+            <br>
+            <br>
+            <h3><a href="/profile/edit">Edit Profile</a></h3>
+            <h3><a href="/dashboard">Back to Dashboard</a></h3>
+            <br>
+        </div>
+    </div>
+</div>

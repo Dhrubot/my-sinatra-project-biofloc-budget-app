@@ -1,12 +1,26 @@
-<h1>Thank you for choosing to help <%=@campaign.title%></h1>
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <br>
+            <br>
+            <h1>Thank you for choosing to help <%=@campaign.title%></h1>
+            <br>
+            <label for="donation-amount">Enter Your Donation Amount</label>
+            <form method="POST" action="/campaigns/<%=@campaign.id%>/donate">
+                <span> USD $<input type="text" name="amount">.00</span>
+                <br>
+                <br>
+                <br>
+                <textarea name="message">Leave a supportive message to the organizer!</textarea>
+                <br>
+                <br>
+                <br>
+                <input class="btn btn-success"type="submit" value="Confirm Donation">
+                <br>
+                <br>
+            </form>
 
-<label for="donation-amount">Enter Your Donation Amount</label>
-<form method="POST" action="/campaigns/<%=@campaign.id%>/donate">
-    <span> USD $<input type="text" name="amount">.00</span>
-    <br>
-    <textarea name="message">Leave a supportive message to the organizer!</textarea>
-    <br>
-    <input type="submit" value="Confirm Donation">
-</form>
-
-<a href="/campaigns/<%=@campaign.id%>">Back to Campaign</a>
+            <a class="secondary" href="/campaigns/<%=@campaign.id%>">Back to Campaign</a>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+    use Rack::Flash, :sweep => true
 
     configure do 
         set :public_folder, 'public'
@@ -22,6 +23,13 @@ class ApplicationController < Sinatra::Base
 
         def current_user
             @user ||= User.find(session[:user_id]) if session[:user_id]
+        end
+
+        def authentication_error
+            if !logged_in?
+                flash[:notice] = "You must Log In or Sign Up to proceed!"
+                redirect to '/login'
+            end
         end
     end 
 
