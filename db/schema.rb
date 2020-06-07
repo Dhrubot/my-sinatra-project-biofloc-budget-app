@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_071432) do
+ActiveRecord::Schema.define(version: 2020_06_07_231107) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
@@ -30,10 +30,8 @@ ActiveRecord::Schema.define(version: 2020_06_02_071432) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "firstname"
+    t.string "lastname"
   end
 
 end
-
-# select donations.amount from donations 
-# join users on donations.donor_id = users.id 
-# join campaigns on donations.campaign_id = campaign.id
