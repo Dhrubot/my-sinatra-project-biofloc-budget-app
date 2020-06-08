@@ -19,6 +19,15 @@
                     <%=campaign.title%>
                     <br>
                     Goal amount: <%="$#{campaign.goal_amount}"%>
+                    <br>
+                    <br>
+                    <span> $<%=campaign.donations.sum(&:amount)%> Raised of $<%=campaign.goal_amount%> Goal</span>
+                    <br>
+                    <div class="progress" style="width: 40%">
+                        <%@percentage = campaign.donations.sum(&:amount).to_f / campaign.goal_amount.to_f * 100 %>
+                        <div class="progress-bar" style="width: <%=@percentage%>%;">>
+                        </div>
+                    </div>
                     </h4>
                     <br>
                     <%=campaign.description%>
