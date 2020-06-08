@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ComeFundUs</title>
+        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
@@ -28,15 +29,18 @@
                             <a class="nav-link" href="/campaigns">Campaigns</a>
                         </li>
                         <%if logged_in? %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">Log out</a>
-                        </li>
+                        <!--Drop Down Menu -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <%=current_user.username%>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                </div>
+                            </li>
                         <%else%>
                         <li class="nav-item">
                             <a class="nav-link" href="/signup">Sign up</a>
@@ -58,23 +62,19 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         
     </body>
-
     <!-- Site footer -->
-    <footer class="site-footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <h6><p class="text-justify"> <a href="/about">About Us</a></p></h6>        
-          </div>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
-         <a href="/">ComeFundUs</a>.
-            </p>
-          </div>
+    <!-- Footer -->
+    <footer class="navbar fixed-bottom navbar-dark bg-transparent">
+    <!--About us -->
+        <div class="footer-about float-left py-3">
+            <a href="/about">About us</a>
         </div>
-      </div>
-</footer>
+    <!-- Copyright -->
+        <div class="footer-copyright float-right py-3">© 2020 Copyright:
+            <a href="/"> ComeFundUs.com</a>
+        </div>
+    <!-- Copyright -->
+
+    </footer> 
+    </div>
 </html>

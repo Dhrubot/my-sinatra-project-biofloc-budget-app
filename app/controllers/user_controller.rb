@@ -32,7 +32,7 @@ class UserController < ApplicationController
 
     #create
     post '/dashboard' do
-        @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+        @user = User.new(username: params[:username], email: params[:email], password: params[:password], firstname: params[:firstname], lastname: params[:lastname])
         if @user.save && @user.valid?
             session[:user_id] = @user.id
             redirect to "/dashboard" 

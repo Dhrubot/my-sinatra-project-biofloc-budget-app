@@ -59,13 +59,11 @@
 <div class="container-fluid">
         <div class="row jumbotron">
                 <div class="col-xs-12 col sm-12 col-md-9 col-lg-9 col-xl-10">
-                        <p class="lead">This is a project I built for my Flatiron School curriculum. This project came out of a dream to make the world a better place. With our shared inspiration, we can help bring changes to our world by 
-                        helping an individual, supporting a community in need of help. That's how we will change the world. Our goal is to bring a change by giving everyone the chance to tell their story and 
-                        share it with the rest of the world through this website and World Wide Web. Hope this is just the start of a new beginning...
+                        <p class="lead"> The purpose of the site is to giv you all the tools so you can share your story with the world. Are you ready to make a change?
                         </p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                        <a href="campaigns/new"><button type="button" class="btn btn-outline-secondary btn-sm">
+                        <a href="campaigns/new"><button type="button" class="btn btn-outline-secondary btn-md">
                         Create a Fundraising Campaign
                         </button></a>
                 </div>
@@ -90,10 +88,6 @@
                 <p><%=@featured_campaign.description%></p>
             </div>
             <div class="col-lg-6">
-            <br>
-            <br>
-            <br>
-            <br>
                 <p><h4>$<%=@featured_campaign.donations.sum(&:amount)%> Raised of $<%=@featured_campaign.goal_amount%> Goal</h4>
                 <div class="progress">
                 <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="#{<%=@featured_campaign.donations.sum(&:amount)%>}" aria-valuemin="0" aria-valuemax="#{<%=@featured_campaign.goal_amount%>}">
