@@ -1,22 +1,30 @@
 <div class="container-fluid padding">
-    <div class="row welcome text-center">
-        <div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-6 text-center float-left">
             <br>
             <h4 class="display-6 strong">Firstname: <%=@user.firstname%><h4>
-            <br>
             <h4 class="display-6 strong">LastName: <%=@user.lastname%></h4>
             <br>
             <h4 class="display-6 strong">Logged in as: <%=@user.username%></h4>
             <br>
             <h4 class="display-6 strong">Email Address: <%=@user.email%></h4>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3><a href="/profile/edit">Edit Profile</a></h3>
+            <h3><a href="/dashboard">Back to Dashboard</a></h3>
+            <br>
+        </div>
+
+        <div class="col-lg-6 text-center float-right">
+            <br>
             <h4 class="display-6 strong"><%=@user.username%>, You've organized <%=@user.organized_campaigns.count%> campaigns so far.</h4>
             <br>
             <h4 class="display-6 strong"><%=@user.username%>, You've generously contributed to <%=@user.donations.count%> campaigns!</h4>
             <br>
             <br>
-            <h3><a href="/profile/edit">Edit Profile</a></h3>
-            <h3><a href="/dashboard">Back to Dashboard</a></h3>
             <br>
         </div>
     </div>

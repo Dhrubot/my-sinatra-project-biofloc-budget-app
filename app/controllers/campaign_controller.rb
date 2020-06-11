@@ -21,6 +21,7 @@ class CampaignController < ApplicationController
         @campaign.title = params[:title]
         @campaign.description = params[:description]
         @campaign.goal_amount = params[:goal_amount]
+        @campaign.organizer = current_user
         @campaign.save
 
         redirect to "/campaigns/#{@campaign.id}"

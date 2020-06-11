@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
 
         def authentication_error
             if !logged_in?
-                flash[:notice] = "You must Log In or Sign Up to proceed!"
+                flash[:nmessage] = "You must Log In or Sign Up to proceed!"
                 redirect to '/login'
             end
         end

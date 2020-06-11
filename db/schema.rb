@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_231107) do
+ActiveRecord::Schema.define(version: 2020_06_02_071432) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.integer "goal_amount"
     t.integer "organizer_id"
   end
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 2020_06_07_231107) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "firstname"
-    t.string "lastname"
   end
 
 end

@@ -31,8 +31,8 @@ class UserController < ApplicationController
     end
 
     #create
-    post '/dashboard' do
-        @user = User.new(username: params[:username], email: params[:email], password: params[:password], firstname: params[:firstname], lastname: params[:lastname])
+    post '/signup' do
+        @user = User.new(firstname: params[:firstname], lastname: params[:lastname], username: params[:username], email: params[:email], password: params[:password])
         if @user.save && @user.valid?
             session[:user_id] = @user.id
             redirect to "/dashboard" 

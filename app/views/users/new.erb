@@ -1,7 +1,9 @@
 <div class="container-fluid padding">
     <div class="row welcome text-center">
         <div class="col-12">
-
+            <br>
+            <br>
+            <br>
 
             <h1>Signup</h1>
             
@@ -15,7 +17,15 @@
                 <% end %>
             <% end %>
             
-            <form method="POST" action="/dashboard">
+            <form method="POST" action="/signup">
+                <label for="firstname">Please enter your firstname:</label>
+                <br>
+                <input type="text" name="firstname" id="firstname" placeholder="Firstname:">
+                <br>
+                <label for="lastname">Please enter your lastname:</label>
+                <br>
+                <input type="text" name="lastname" id="lastname" placeholder="Lastname:">
+                <br>
                 <label for="username">Please choose a Username:</label>
                 <br>
                 <input type="text" name="username" id="username" placeholder="Username:">
@@ -30,7 +40,7 @@
                 <input type="password" name="password" id="password" placeholder="Password:">
                 <br>
                 <br>
-                <input type="submit" value="Submit">
+                <input class="btn btn-success" type="submit" value="Submit">
             </form>
         </div>
     </div>

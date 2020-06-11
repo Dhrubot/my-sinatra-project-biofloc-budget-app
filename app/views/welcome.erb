@@ -89,8 +89,9 @@
             </div>
             <div class="col-lg-6">
                 <p><h4>$<%=@featured_campaign.donations.sum(&:amount)%> Raised of $<%=@featured_campaign.goal_amount%> Goal</h4>
-                <div class="progress">
-                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="#{<%=@featured_campaign.donations.sum(&:amount)%>}" aria-valuemin="0" aria-valuemax="#{<%=@featured_campaign.goal_amount%>}">
+                <div class="progress" style="width :100%">
+                        <%@percentage = @featured_campaign.donations.sum(&:amount).to_f / @featured_campaign.goal_amount.to_f * 100 %>
+                <div class="progress-bar" style="width: <%=@percentage%>%;">
                 </div>
                 </div>
                 </p>
